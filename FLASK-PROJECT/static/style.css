@@ -1,0 +1,291 @@
+/* ================================================= */
+/* 1. Global Reset & Typography */
+/* ================================================= */
+
+:root {
+    --primary-color: #2e8b57; /* Sea Green - for buttons/links */
+    --secondary-color: #f0fff0; /* Honeydew - light background */
+    --text-color: #333;
+    --border-color: #ccc;
+    --success-color: #4caf50;
+    --error-color: #f44336;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+/* ================================================= */
+/* 2. Layout and Containers */
+/* ================================================= */
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 20px 0;
+}
+
+/* ================================================= */
+/* 3. Links and Buttons */
+/* ================================================= */
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #1e5e39; /* Darker green on hover */
+    text-decoration: underline;
+}
+
+button,
+input[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #1e5e39;
+}
+
+/* ================================================= */
+/* 4. Forms (Login, Register, Add/Edit Generic) */
+/* ================================================= */
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+/* Specific styling for the form buttons */
+form button {
+    width: auto;
+    margin-top: 10px;
+}
+
+/* ================================================= */
+/* 5. Tables (Admin View, Customer Orders) */
+/* ================================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    box-shadow: var(--shadow);
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Table Footer for Grand Total (Order Details) */
+tfoot td {
+    font-weight: bold;
+    background-color: #e6e6e6;
+    border-top: 2px solid var(--primary-color);
+}
+
+/* ================================================= */
+/* 6. Messages and Alerts */
+/* ================================================= */
+
+/* Success and Error messages from Flask redirects */
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.message.success {
+    background-color: #e8f5e9; /* Light green background */
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.message.error {
+    background-color: #ffebee; /* Light red background */
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+/* Styling for inline messages in HTML (like in Register) */
+p[style*="green"], p[style*="red"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+p[style*="green"] {
+    background-color: #e8f5e9; 
+    color: var(--success-color);
+}
+
+p[style*="red"] {
+    background-color: #ffebee; 
+    color: var(--error-color);
+}
+
+/* ================================================= */
+/* 7. Specific Element Styling (Admin Page List) */
+/* ================================================= */
+
+/* Admin Dashboard List */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+ul li a {
+    font-weight: bold;
+    font-size: 1.1em;
+    display: block;
+}
+/* ================================================= */
+/* 8. Home Page Specific Styling */
+/* ================================================= */
+
+.home-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(46, 139, 87, 0.1); /* Lighter shadow with primary color tint */
+}
+
+.home-header h1 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    border-bottom: none; /* Remove border from the main header */
+}
+
+.flower-icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+    color: #4CAF50; /* A brighter green for the icon */
+}
+
+.home-header p.lead {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.home-cta {
+    padding: 30px 0;
+}
+
+.home-cta h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    border-bottom: 1px dashed var(--border-color);
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+/* Styling the main CTA button */
+.primary-button {
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.primary-button:hover {
+    background-color: #1e5e39;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.register-link {
+    margin-top: 20px;
+    font-size: 0.95em;
+    color: #777;
+}
+
+.register-link a {
+    font-weight: bold;
+}

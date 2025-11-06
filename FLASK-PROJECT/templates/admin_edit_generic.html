@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit {{ table_name }} ID {{ record_id }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>✍️ Edit {{ table_name }}: ID {{ record_id }}</h1>
+
+        <p><a href="{{ url_for('admin_generic_view', table_name=table_name.lower()) }}">← Back to {{ table_name }} List</a></p>
+        
+        {% if error %}
+            <p class="message error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('admin_edit_generic', table_name=table_name.lower(), record_id=record_id) }}">
+            
+            {% for field in fields %}
+            <div>
+                <label for="{{ field }}">{{ field | replace('_', ' ') | capitalize }}:</label>
+                
+                <input type="text" id="{{ field }}" name="{{ field }}" value="{{ record[field] if record[field] is not none else '' }}" required>
+            </div>
+            {% endfor %}
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

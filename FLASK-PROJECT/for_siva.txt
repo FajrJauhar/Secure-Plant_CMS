@@ -1,0 +1,12 @@
+🛡️ Security and Robustness Features
+1.Access Control Authorization
+User Based Access Control (UBAC/RBAC)
+Field-Level Access Control
+
+2. Input & Data Integrity 
+Input Validation and sanitization
+Password Hashing
+
+3.Application Resilience and Defense
+Rate Limiting
+Content Security Policy(CSP)

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order #{{ order_id }} Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Order Details: #{{ order_id }}</h1>
+
+    <p><a href="{{ url_for('customer_view_orders') }}">← Back to My Orders</a></p>
+
+    {% if details %}
+    <table>
+        <thead>
+            <tr>
+                <th>Plant Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set total_amount = 0 %}
+            {% for item in details %}
+            <tr>
+                <td>**{{ item.plant_name }}**</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.item_price | round(2) }}</td>
+                <td>{{ item.subtotal | round(2) }}</td>
+                
+                {% set total_amount = total_amount + item.subtotal %}
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" style="text-align: right;">**GRAND TOTAL:**</td>
+                <td>**{{ total_amount | round(2) }}**</td>
+            </tr>
+        </tfoot>
+    </table>
+    {% else %}
+    <p>This order is empty or details could not be loaded.</p>
+    {% endif %}
+
+</body>
+</html>

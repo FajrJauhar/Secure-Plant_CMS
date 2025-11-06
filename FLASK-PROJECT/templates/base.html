@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Plant Management System{% endblock %}</title> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    
+    <div id="main-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

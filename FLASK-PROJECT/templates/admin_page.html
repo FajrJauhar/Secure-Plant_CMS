@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>⚙️ Admin Management Dashboard</h1>
+    <p>Select a table below to manage its data.</p>
+
+    <h2>Management Sections</h2>
+    
+    {% if tables %}
+    <ul>
+        {% for table in tables %}
+        <li>
+            <a href="/admin/view/{{ table }}">
+                **Manage {{ table | replace('_', ' ') | capitalize }}**
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No tables found in the database.</p>
+    {% endif %}
+    
+    <hr>
+    <p><a href="/logout">Logout</a></p>
+
+</body>
+</html>

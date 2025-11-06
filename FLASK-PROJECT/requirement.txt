@@ -1,0 +1,5 @@
+Flask
+Flask-Talisman
+Flask-Limiter
+Werkzeug
+mysql-connector-python

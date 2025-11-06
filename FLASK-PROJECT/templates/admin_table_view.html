@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin View | {{ table_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Administration: {{ table_name }}</h1>
+
+    <p><a href="/">← Back to Dashboard</a></p>
+
+    <p>
+        <a href="/admin/add_{{ table_name | lower | replace(' ', '_') }}">
+            <button>+ Add New {{ table_name }}</button>
+        </a>
+    </p>
+
+    {% if data %}
+    <table>
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header | replace('_', ' ') | capitalize }}</th>
+                {% endfor %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for header in headers %}
+                <td>{{ row[header] }}</td>
+                {% endfor %}
+                
+                <td>
+                    <a href="/admin/edit/{{ table_name | lower | replace(' ', '_') }}/{{ row[headers[0]] }}">Edit</a> 
+                    | 
+                    <a href="/admin/delete/{{ table_name | lower | replace(' ', '_') }}/{{ row[headers[0]] }}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No records found in the **{{ table_name }}** table.</p>
+    {% endif %}
+
+</body>
+</html>

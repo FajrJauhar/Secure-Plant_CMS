@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Plant Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🪴 Welcome to the Shop!</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="message {{ messages[0][0] }}">
+                {{ messages[0][1] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <p>Logged in as Customer. <a href="{{ url_for('logout') }}">Logout</a> | <a href="{{ url_for('customer_view_orders') }}">My Orders</a></p>
+    
+    {% if error %}
+        <p class="message error">{{ error }}</p>
+    {% endif %}
+
+    <h2>Available Plants</h2>
+    
+    {% if plants %}
+    <table>
+        <thead>
+            <tr>
+                <th>Plant Name</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>In Stock</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plant in plants %}
+            <tr>
+                <td>{{ plant.name }}</td>
+                <td>{{ plant.type }}</td>
+                <td>{{ plant.category }}</td>
+                <td>${{ "{:.2f}".format(plant.price) }}</td>
+                <td>{{ plant.stock_quantity }}</td>
+                <td>
+    {% if plant.stock_quantity > 0 %}
+        <form method="POST" action="{{ url_for('add_to_cart', plant_id=plant.plant_id) }}">
+            <button type="submit" class="cart-button">🛒 Add to Cart</button>
+        </form>
+    {% else %}
+        <span style="color: grey;">Out of Stock</span>
+    {% endif %}
+</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No plants are currently available for sale.</p>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %} 
+
+{% block title %}Welcome to Nature's Cart{% endblock %} 
+
+{% block content %}
+<div class="home-container">
+    <header class="home-header">
+        <h1><span class="flower-icon">🌿</span> Nature's Cart</h1>
+        <p class="lead">Effortlessly manage your plants, suppliers, customers, and orders.</p>
+    </header>
+
+    <main class="home-main">
+        <section class="home-cta">
+            <h2>Welcome to the Plant Management System</h2>
+            <p>Ready to manage your inventory or place an order?</p>
+            
+            <a href="{{ url_for('login') }}" class="button primary-button">
+                Log In to Get Started
+            </a>
+            
+            <p class="register-link">
+                Don't have an account? <a href="{{ url_for('register') }}">Register here</a>.
+            </p>
+        </section>
+    </main>
+</div>
+{% endblock %}
